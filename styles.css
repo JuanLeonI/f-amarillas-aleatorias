@@ -4,18 +4,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f7f7f7;
+    overflow-x: hidden;
 }
 
 .container {
     text-align: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 28px; /* Tamaño reducido para móviles */
     color: #8B4513;
-    margin-top: 20px;
+    margin-top: 10px; /* Margen reducido */
     z-index: 1;
 }
 
@@ -23,18 +27,19 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px; /* Reemplaza los márgenes individuales */
 }
 
 .flower {
-    width: 200px;
-    height: 200px;
-    margin: 10px;
+    width: 150px; /* Tamaño reducido para móviles */
+    height: 150px; /* Tamaño reducido para móviles */
+    margin: 5px; /* Margen reducido */
     position: relative;
 }
 
 .petal {
-    width: 45px;
-    height: 90px;
+    width: 35px; /* Tamaño reducido para móviles */
+    height: 70px; /* Tamaño reducido para móviles */
     background-color: #FFD700;
     border-radius: 50%;
     position: absolute;
@@ -43,6 +48,7 @@ h1 {
     transform-origin: 0 100%;
 }
 
+/* Posiciones de los pétalos (sin cambios) */
 .p1 { transform: translate(-50%, -50%) rotate(0deg); }
 .p2 { transform: translate(-50%, -50%) rotate(36deg); }
 .p3 { transform: translate(-50%, -50%) rotate(72deg); }
@@ -54,28 +60,51 @@ h1 {
 .p9 { transform: translate(-50%, -50%) rotate(288deg); }
 .p10 { transform: translate(-50%, -50%) rotate(324deg); }
 
-/* Agrega las siguientes clases para las animaciones */
+/* Animaciones (sin cambios) */
 @keyframes fadeInPetal {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes fadeOutPetal {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 .petal {
-    /* Agrega una animación de entrada a los pétalos */
     animation: fadeInPetal 0.5s ease-in-out both;
 }
 
+/* Media Queries para diferentes tamaños de pantalla */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+        margin-top: 5px;
+    }
+    
+    .flower {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .petal {
+        width: 30px;
+        height: 60px;
+    }
+}
 
+@media (max-width: 400px) {
+    .flower {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .petal {
+        width: 25px;
+        height: 50px;
+    }
+    
+    .flower-container {
+        gap: 5px;
+    }
+}
